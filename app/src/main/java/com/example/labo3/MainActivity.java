@@ -1,0 +1,38 @@
+package com.example.labo3;
+
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.util.Log;
+import android.widget.Button;
+
+import com.example.labo3.utils.AppConstants;
+
+public class MainActivity extends AppCompatActivity {
+
+    private static final String TAG=MainActivity.class.getSimpleName();
+    private Button mButton, mButtonShare;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        mButton=findViewById(R.id.btn_send);
+        mButtonShare=findViewById(R.id.btn_send2);
+
+        mButton.setOnClickListener(v->{
+            Intent mIntent=new Intent(MainActivity.this,Main2.class);
+            mIntent.putExtra(AppConstants.TEXT_KEY,"SIIIIIIIIIIUUUUUU");
+            startActivity(mIntent);
+        });
+        mButtonShare.setOnClickListener(v->{
+            Intent mIntent = new Intent();
+            mIntent.setAction(Intent.ACTION_SEND);
+            mIntent.setType("text/plain");
+            mIntent.putExtra(Intent.EXTRA_TEXT,"pupu");
+            startActivity(mIntent);
+        });
+    }
+
+
+}
